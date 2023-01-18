@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+
+  mokitad:
+    image: local:mokita
+    build:
+      context: ../../../
+      dockerfile: Dockerfile
+      args:
+        RUNNER_IMAGE: alpine:3.16
+        GO_VERSION: 1.18
+    volumes:
+      - ./scripts/start.sh:/mokita/start.sh
+      - ./scripts/testnetify.py:/mokita/testnetify.py
+      - ./state_export.json:/mokita/state_export.json
+      - $HOME/.mokitad-local/:/mokita/.mokitad/
+    entrypoint:
+      - /mokita/start.sh
+    environment:
+      - MONIKER=val
+      - CHAIN_ID=localmokita
+    ports:
+      - 26657:26657
+      - 1317:1317
+      - 9090:9090
+      - 9091:9091

@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+
+  mokitad:
+    image: local:mokita
+    build:
+      context: ../../
+      dockerfile: Dockerfile
+      args:
+        RUNNER_IMAGE: alpine:3.16
+        GO_VERSION: 1.18
+    volumes:
+      - ./scripts/nativeDenomPoolA.json:/mokita/nativeDenomPoolA.json
+      - ./scripts/nativeDenomPoolB.json:/mokita/nativeDenomPoolB.json
+      - ./scripts/nativeDenomThreeAssetPool.json:/mokita/nativeDenomThreeAssetPool.json
+      - ./scripts/setup.sh:/mokita/setup.sh
+      - $HOME/.mokitad-local/:/mokita/.mokitad/
+    entrypoint:
+      - /mokita/setup.sh
+    command:
+      - $STATE
+    ports:
+      - 26657:26657
+      - 1317:1317
+      - 9090:9090
+      - 9091:9091
