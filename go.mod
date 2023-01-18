@@ -3,7 +3,7 @@ module github.com/tessornetwork/mokita
 go 1.18
 
 require (
-	github.com/CosmWasm/wasmd v0.29.2-moki-v13
+	github.com/CosmWasm/wasmd v0.29.2-osmo-v13
 	github.com/cosmos/cosmos-proto v1.0.0-alpha8
 	github.com/cosmos/cosmos-sdk v0.46.7
 	github.com/cosmos/go-bip39 v1.0.0
@@ -296,8 +296,8 @@ require (
 )
 
 replace (
-	// mokita-patched wasmd
-	github.com/CosmWasm/wasmd => github.com/osmosis-labs/wasmd v0.29.2-moki-v13
+	// osmosis-patched wasmd
+	github.com/CosmWasm/wasmd => github.com/osmosis-labs/wasmd v0.29.2-osmo-v13
 	// dragonberry
 	github.com/confio/ics23/go => github.com/cosmos/cosmos-sdk/ics23/go v0.8.0
 	// Our cosmos-sdk branch is:  https://github.com/osmosis-labs/cosmos-sdk, current branch: v13.x. Direct commit link: https://github.com/osmosis-labs/cosmos-sdk/commit/8757a61551aa1ea993c85a523e18094ab555b1d7
